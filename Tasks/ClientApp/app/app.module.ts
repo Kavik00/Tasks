@@ -7,6 +7,10 @@ import { HomeComponent } from './components/home/home.component';
 import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
 
+import { TaskListComponent } from './components/task-list/task-list.component';
+import { TaskService } from './services/task.service';
+
+
 @NgModule({
     bootstrap: [ AppComponent ],
     declarations: [
@@ -14,8 +18,14 @@ import { CounterComponent } from './components/counter/counter.component';
         NavMenuComponent,
         CounterComponent,
         FetchDataComponent,
-        HomeComponent
+        HomeComponent,
+        TaskListComponent
     ],
+
+    providers: [
+        TaskService
+    ],
+
     imports: [
         UniversalModule, // Must be first import. This automatically imports BrowserModule, HttpModule, and JsonpModule too.
         RouterModule.forRoot([
@@ -23,6 +33,7 @@ import { CounterComponent } from './components/counter/counter.component';
             { path: 'home', component: HomeComponent },
             { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },
+            { path: 'task-list', component: TaskListComponent },
             { path: '**', redirectTo: 'home' }
         ])
     ]

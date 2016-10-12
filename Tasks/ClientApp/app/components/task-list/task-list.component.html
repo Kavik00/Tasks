@@ -1,0 +1,28 @@
+﻿<!--<h4>Create a Task</h4>
+<form (submit)="addTask(task)">
+    <input [(ngModel)]="task.title" name="task" />
+    <input class="btn btn-info btn-xs" type="submit" value="Add Task" />
+</form>-->
+
+<h4>Task List View</h4>
+
+<div class="row">
+    <div class="col-md-8">
+        <table class="table">
+            <tr>
+                <th>Task</th>
+                <th>Completed</th>
+            </tr>
+            <tr *ngFor="let task of tasks">
+                <td id=task [class.completed]="task.completed">{{task.title}}</td>
+                <td align="center" id="completed"><i *ngIf="task.completed" class="fa fa-check" aria-hidden="true"></i></td>
+                <td id="button"><button class="btn btn-success btn-xs" (click)="completeTask(task)">{{task.buttonText}}</button></td>
+                <td><button (click)="deleteTask(task)"> x </button></td>
+            </tr>
+
+
+        </table>
+    </div>
+
+</div>
+
