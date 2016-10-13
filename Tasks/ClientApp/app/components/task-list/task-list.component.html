@@ -4,7 +4,7 @@
     <input class="btn btn-info btn-xs" type="submit" value="Add Task" />
 </form>-->
 
-<h4>Task List View</h4>
+<h3>Task List View</h3>
 
 <div class="row">
     <div class="col-md-8">
@@ -17,7 +17,7 @@
                 <td id=task [class.completed]="task.completed">{{task.title}}</td>
                 <td align="center" id="completed"><i *ngIf="task.completed" class="fa fa-check" aria-hidden="true"></i></td>
                 <td id="button"><button class="btn btn-success btn-xs" (click)="completeTask(task)">{{task.buttonText}}</button></td>
-                <td><button (click)="deleteTask(task)"> x </button></td>
+                <td><button class="btn btn-danger btn-xs"  (click)="deleteTask(task)"><i class="fa fa-trash"></i>  </button></td>
             </tr>
 
 

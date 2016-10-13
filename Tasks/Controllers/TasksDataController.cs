@@ -23,7 +23,12 @@ namespace Tasks.Controllers
             return Json(TasksData);            
         }
 
-        
+        [HttpDelete("{task}")]
+        public IActionResult DeleteTask(Task task)
+        {
+            TasksData.Remove(task);
+            return new NoContentResult();
+        }
     }
 
     public class Task

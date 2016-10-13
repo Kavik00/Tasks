@@ -1,0 +1,43 @@
+﻿h3{
+    color:blue
+}
+
+.red {
+    color: red;
+}
+
+.blue{
+    color: blue;
+}
+.green{
+    color:green;
+}
+
+.completed{
+    text-decoration: line-through;
+
+}
+
+table{
+
+}
+
+table #task{
+    width: auto;
+}
+
+table #completed{
+    color:blue;
+    width: 20px;
+    
+}
+
+table #button{
+    width: 120px;
+    
+}
+
+table tr{
+    height:10px;
+    
+}
