@@ -30,6 +30,7 @@ namespace Tasks
         {
             // Add framework services.
             services.AddMvc();
+            services.AddSwaggerGen();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,6 +52,8 @@ namespace Tasks
             }
 
             app.UseStaticFiles();
+            app.UseSwagger();
+            app.UseSwaggerUi();
 
             app.UseMvc(routes =>
             {
@@ -58,10 +61,14 @@ namespace Tasks
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
 
+                
+
                 routes.MapSpaFallbackRoute(
                     name: "spa-fallback",
                     defaults: new { controller = "Home", action = "Index" });
             });
+
+
         }
     }
 }

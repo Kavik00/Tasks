@@ -6,14 +6,14 @@ import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-import { Task } from '../components/task-list/task';
+import { TaskItem } from '../components/task-list/taskItem';
 
 @Injectable()
 export class TaskService {
 
     private tasksUrl = '/api/TasksData/GetTasks'; //URL to web api
     private headers = new Headers({ 'Content-Type': 'application/json' });
-    private tasks = new Array<Task>();
+    private tasks = new Array<TaskItem>();
 
     constructor(private _http: Http) {}
 
