@@ -35,11 +35,12 @@ namespace Tasks.Controllers
         }
 
         [HttpPost]
-        public IActionResult SaveTask(  TaskItem task)
+        [ProducesResponseType(typeof(TaskItem),201)]
+        public IActionResult SaveTask([FromBody] TaskItem task)
         {
-            var tsk = JsonConvert.SerializeObject(task);
+            //var tsk = JsonConvert.SerializeObject(task);
 
-            System.IO.File.WriteAllText(@"C:\Users\gary\Source\Repos\Tasks\Tasks\Tasks\tasksData.json", tsk);
+            //System.IO.File.WriteAllText(@"C:\Users\gary\Source\Repos\Tasks\Tasks\Tasks\tasksData.json", tsk);
 
             return Ok(task);
         }
