@@ -19,6 +19,7 @@ namespace Tasks.Controllers
             new TaskItem() {Id=4, Title = "Fourth Task", Completed=false, Created = DateTime.Now, Updated = DateTime.Now, Notes="", ButtonText = "Complete" }
         };
 
+        TaskService taskService = new TaskService();
 
 
         [HttpGet("[action]")]
@@ -31,16 +32,16 @@ namespace Tasks.Controllers
         public IActionResult DeleteTask(TaskItem task)
         {
             TasksData.Remove(task);
-            //return new NoContentResult();
+            return new NoContentResult();
+        }
 
-        [HttpPost]
+        [HttpPost ("[action]")]
         [ProducesResponseType(typeof(TaskItem),201)]
-        public IActionResult SaveTask([FromBody] TaskItem task)
+        public IActionResult CreateTask([FromBody] TaskItem task)
         {
-            //var tsk = JsonConvert.SerializeObject(task);
 
-            //System.IO.File.WriteAllText(@"C:\Users\gary\Source\Repos\Tasks\Tasks\Tasks\tasksData.json", tsk);
-
+            TasksData.Add(task);
+            //"taskService.SaveTasks(TasksData);
             return Ok(task);
         }
     }
@@ -55,7 +56,23 @@ namespace Tasks.Controllers
         public string Notes { get; set; }
         public string ButtonText { get; set; }
 
+    }
 
+    public class TaskService
+    {
+        public void SaveTask (TaskItem task)
+        {
+            var tsk = JsonConvert.SerializeObject(task);
+            System.IO.File.WriteAllText(@"C:\Users\gary\Source\Repos\Tasks\Tasks\Tasks\tasksData.json", tsk);
+
+        }
+
+        public void SaveTasks(List<TaskItem> data)
+        {
+            var tsk = JsonConvert.SerializeObject(data);
+            System.IO.File.WriteAllText(@"C:\Users\gary\Source\Repos\Tasks\Tasks\Tasks\tasksData.json", tsk);
+
+        }
 
     }
 }
