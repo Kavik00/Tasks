@@ -31,8 +31,7 @@ namespace Tasks.Controllers
         public IActionResult DeleteTask(TaskItem task)
         {
             TasksData.Remove(task);
-            return new NoContentResult();
-        }
+            //return new NoContentResult();
 
         [HttpPost]
         [ProducesResponseType(typeof(TaskItem),201)]
