@@ -57,11 +57,26 @@ export class TaskListComponent implements OnInit {
 
         let body = JSON.stringify(taskItem);
 
-        alert("the service got called. Create " + taskItem.title)
-
         return this._http.post('/api/TasksData/CreateTask', body, this.options)
             .map(res => res.json());
  
+    }
+
+    deleteTask(id: number) {
+        this.ServiceDeleteTask(id)
+            .subscribe(
+            () => null)
+        this.getTasks();
+
+
+    }
+
+    ServiceDeleteTask(id: number): Observable<TaskItem>  {
+        //alert ('going to delete ' + id)
+        let url = '/api/TasksData/DeleteTask/' + id;
+        return this._http.delete(url, { headers: this.headers })
+            .map(res => null);
+
     }
     
     
@@ -73,17 +88,12 @@ export class TaskListComponent implements OnInit {
 
         else {
             task.completed = false;
-            task.buttonText = "Complete";
+            task.buttonText = "Complete"; 
         }
-
-            
+          
     }
 
-    deleteTask(task: TaskItem): void {
-        this.tasks = this.tasks.filter(h => h !== task);
-        this._http.delete('[/api/TasksData/DeleteTask/${task}', { headers: this.headers }).toPromise().then(() => null);
-        
-    }
+
 
 
     private handleError(error: any): Promise<any> {
